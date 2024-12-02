@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g fill="none" stroke="green" stroke-width="2">
+    <!-- Stem -->
+    <line x1="32" y1="40" x2="32" y2="60" stroke-linecap="round"/>
+
+    <!-- Leaves -->
+    <path d="M32 40 C20 35, 20 20, 32 20 C44 20, 44 35, 32 40 Z" fill="green" />
+    <path d="M32 30 C40 25, 50 20, 40 15 C30 10, 20 15, 32 30 Z" fill="green" />
+  </g>
+</svg>
