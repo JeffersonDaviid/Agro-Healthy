@@ -30,17 +30,17 @@ const Contact = () => {
 			<NavBar />
 
 			{/* Contact Content */}
-			<main className='container mx-auto py-8'>
-				<h2 className='text-3xl font-bold mb-6'>Contact Us</h2>
-				<div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+			<main className='container py-8 mx-auto'>
+				<h2 className='mb-6 text-3xl font-bold'>Contact Us</h2>
+				<div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
 					{/* Contact Form */}
-					<div className='bg-white p-6 rounded-lg shadow-md'>
-						<h3 className='text-xl font-semibold mb-4'>Send us a message</h3>
+					<div className='p-6 bg-white rounded-lg shadow-md'>
+						<h3 className='mb-4 text-xl font-semibold'>Send us a message</h3>
 						<form onSubmit={handleSubmit}>
 							<div className='mb-4'>
 								<label
 									htmlFor='name'
-									className='block text-sm font-medium text-gray-700 mb-2'>
+									className='block mb-2 text-sm font-medium text-gray-700'>
 									Name
 								</label>
 								<input
@@ -56,7 +56,7 @@ const Contact = () => {
 							<div className='mb-4'>
 								<label
 									htmlFor='email'
-									className='block text-sm font-medium text-gray-700 mb-2'>
+									className='block mb-2 text-sm font-medium text-gray-700'>
 									Email
 								</label>
 								<input
@@ -72,7 +72,7 @@ const Contact = () => {
 							<div className='mb-4'>
 								<label
 									htmlFor='message'
-									className='block text-sm font-medium text-gray-700 mb-2'>
+									className='block mb-2 text-sm font-medium text-gray-700'>
 									Message
 								</label>
 								<textarea
@@ -86,15 +86,15 @@ const Contact = () => {
 							</div>
 							<button
 								type='submit'
-								className='bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-300'>
+								className='px-4 py-2 text-white transition duration-300 bg-green-600 rounded-md hover:bg-green-700'>
 								Send Message
 							</button>
 						</form>
 					</div>
 
 					{/* Contact Information */}
-					<div className='bg-white p-6 rounded-lg shadow-md'>
-						<h3 className='text-xl font-semibold mb-4'>Get in touch</h3>
+					<div className='p-6 bg-white rounded-lg shadow-md'>
+						<h3 className='mb-4 text-xl font-semibold'>Get in touch</h3>
 						<div className='space-y-4'>
 							<p>
 								<strong>Address:</strong>
@@ -128,9 +128,9 @@ const Contact = () => {
 			</main>
 
 			{/* Footer */}
-			<footer className='bg-green-800 text-white py-8 mt-8'>
+			<footer className='py-8 mt-8 text-white bg-green-800'>
 				<div className='container mx-auto text-center'>
-					<p>&copy; 2024 agrohealthy AI. All rights reserved.</p>
+					<p>&copy; 2024 Agro Healthy AI. All rights reserved.</p>
 				</div>
 			</footer>
 		</div>

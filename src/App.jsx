@@ -4,6 +4,7 @@ import Home from './routes/Home'
 import Demo from './routes/Demo'
 import Contact from './routes/Contact'
 import AboutUs from './routes/About'
+import Main from './routes/Main'
 
 const App = () => {
 	return (
@@ -15,7 +16,7 @@ const App = () => {
 				/>
 				<Route
 					path='/demo'
-					element={<Demo />}
+					element={<Main />}
 				/>
 				<Route
 					path='/contact'

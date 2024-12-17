@@ -1,3 +1,4 @@
+import Footer from '../components/Footer'
 import NavBar from '../components/NavBar'
 
 const AboutUs = () => {
@@ -7,12 +8,12 @@ const AboutUs = () => {
 			<NavBar />
 
 			{/* About Content */}
-			<main className='container mx-auto py-8'>
-				<h2 className='text-3xl font-bold mb-6'>About Agro Healthy AI</h2>
-				<div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+			<main className='container py-8 mx-auto'>
+				<h2 className='mb-6 text-3xl font-bold'>About Agro Healthy AI</h2>
+				<div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
 					{/* Company Overview */}
-					<div className='bg-white p-6 rounded-lg shadow-md'>
-						<h3 className='text-xl font-semibold mb-4'>Our Mission</h3>
+					<div className='p-6 bg-white rounded-lg shadow-md'>
+						<h3 className='mb-4 text-xl font-semibold'>Our Mission</h3>
 						<p className='mb-4'>
 							At Agro Healthy AI, we're on a mission to revolutionize agriculture through
 							cutting-edge artificial intelligence. Our goal is to empower farmers with
@@ -27,19 +28,38 @@ const AboutUs = () => {
 					</div>
 
 					{/* Team Section */}
-					<div className='bg-white p-6 rounded-lg shadow-md'>
-						<h3 className='text-xl font-semibold mb-4'>Our Team</h3>
+					<div className='p-6 bg-white rounded-lg shadow-md'>
+						<h3 className='mb-4 text-xl font-semibold'>Our Team</h3>
 						<div className='grid grid-cols-2 gap-4'>
 							{[
-								{ name: 'Dr. Jane Smith', role: 'CEO & AI Specialist' },
-								{ name: 'John Doe', role: 'Chief Agronomist' },
-								{ name: 'Emily Chen', role: 'Lead Software Engineer' },
-								{ name: 'Michael Johnson', role: 'Data Scientist' },
+								{
+									name: 'Jefferson Chileno',
+									role: 'CEO & AI Specialist',
+									urlImg: './assets/team/jc.jpg',
+								},
+								{
+									name: 'Jonathan Luzuriaga',
+									role: 'Chief Agronomist',
+									urlImg: './assets/team/jl.jpg',
+								},
+								{
+									name: 'Ronny Cartagena',
+									role: 'Lead Software Engineer',
+									urlImg: './assets/team/rnn.jpg',
+								},
+								{
+									name: 'Ricardo Villarreal',
+									role: 'Data Scientist',
+									urlImg: './assets/team/r.jpg',
+								},
 							].map((member, index) => (
 								<div
 									key={index}
 									className='text-center'>
-									<div className='w-24 h-24 bg-gray-300 rounded-full mx-auto mb-2'></div>
+									<img
+										className='w-24 h-24 mx-auto mb-2 bg-gray-300 rounded-full'
+										src={member.urlImg}
+									/>
 									<h4 className='font-semibold'>{member.name}</h4>
 									<p className='text-sm text-gray-600'>{member.role}</p>
 								</div>
@@ -49,14 +69,14 @@ const AboutUs = () => {
 				</div>
 
 				{/* Technology Section */}
-				<div className='mt-8 bg-white p-6 rounded-lg shadow-md'>
-					<h3 className='text-xl font-semibold mb-4'>Our Technology</h3>
+				<div className='p-6 mt-8 bg-white rounded-lg shadow-md'>
+					<h3 className='mb-4 text-xl font-semibold'>Our Technology</h3>
 					<p className='mb-4'>
 						Agro Healthy AI leverages state-of-the-art machine learning algorithms and
 						satellite imagery to provide accurate predictions and recommendations for
 						water management. Our system analyzes various factors including:
 					</p>
-					<ul className='list-disc list-inside mb-4'>
+					<ul className='mb-4 list-disc list-inside'>
 						<li>Soil moisture levels</li>
 						<li>Weather patterns</li>
 						<li>Crop types and growth stages</li>
@@ -71,11 +91,7 @@ const AboutUs = () => {
 			</main>
 
 			{/* Footer */}
-			<footer className='bg-green-800 text-white py-8 mt-8'>
-				<div className='container mx-auto text-center'>
-					<p>&copy; 2024 Agro Healthy AI. All rights reserved.</p>
-				</div>
-			</footer>
+			<Footer />
 		</div>
 	)
 }
