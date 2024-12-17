@@ -1,15 +1,15 @@
 import axios from 'axios'
 
 export const getSoilMoisture = (areaCorners, date) => {
-	// const fetchMoistureData = async () => {
-	// 	const data_calculate = generateCoordinatesInside(areaCorners, date)
-	// 	const data = {
-	// 		data: data_calculate,
-	// 	}
-	// 	const response = await axios.post('http://localhost:8000/predict', data)
-	// 	localStorage.setItem('moistureData', JSON.stringify(response.data))
-	// 	return response.data
-	// }
+	const fetchMoistureData = async () => {
+		const data_calculate = generateCoordinatesInside(areaCorners, date)
+		const data = {
+			data: data_calculate,
+		}
+		const response = await axios.post('http://localhost:8000/predict', data)
+		localStorage.setItem('moistureData', JSON.stringify(response.data))
+		return response.data
+	}
 
 	if (localStorage.getItem('moistureData')) {
 		console.log(JSON.parse(localStorage.getItem('moistureData')))
