@@ -1,10 +1,9 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './routes/Home'
-import Demo from './routes/Demo'
-import Contact from './routes/Contact'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import AboutUs from './routes/About'
-import Main from './routes/Main'
+import Contact from './routes/Contact'
+import Demo from './routes/Demo'
+import Home from './routes/Home'
 
 const App = () => {
 	return (
@@ -16,7 +15,7 @@ const App = () => {
 				/>
 				<Route
 					path='/demo'
-					element={<Main />}
+					element={<Demo />}
 				/>
 				<Route
 					path='/contact'

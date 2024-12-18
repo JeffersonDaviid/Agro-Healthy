@@ -46,7 +46,7 @@ export default function HeatMap({ data, polygonCoordinates }) {
 		// Crear características para el heatmap
 		const features = []
 		if (data) {
-			data?.forEach((point) => {
+			data.forEach((point) => {
 				if (point.lng && point.lat && point.moisture) {
 					const feature = new Feature({
 						geometry: new Point(fromLonLat([point.lng, point.lat])), // Convierte a lon-lat
@@ -60,34 +60,6 @@ export default function HeatMap({ data, polygonCoordinates }) {
 		const vectorSource = new VectorSource({
 			features: features,
 		})
-
-		// Crear la capa de heatmap
-		const heatmapLayer = new Heatmap({
-			source: vectorSource,
-			blur: 15,
-			radius: 15,
-			weight: function (feature) {
-				return feature.get('weight')
-			},
-			gradient: [
-				'rgba(255, 0, 0, 0)', // Transparente (inicio del gradiente)
-				'rgba(255, 0, 0, 1)', // Rojo puro (valores cercanos a 0.0000)
-				'rgba(255, 165, 0, 1)', // Naranja (transición intermedia)
-				'rgba(255, 255, 0, 1)', // Amarillo
-				'rgba(0, 128, 0, 1)', // Verde oscuro (valores cercanos a 0.9999)
-				'rgba(0, 255, 0, 1)', // Verde brillante (valores máximos)
-			],
-		})
-
-		// Eliminar cualquier capa existente antes de agregar una nueva
-		mapInstanceRef.current.getLayers().forEach((layer) => {
-			if (layer instanceof Heatmap) {
-				mapInstanceRef.current.removeLayer(layer)
-			}
-		})
-
-		// Agregar la capa de heatmap
-		mapInstanceRef.current.addLayer(heatmapLayer)
 
 		// Crear el polígono con las coordenadas
 		const polygonFeature = new Feature({
@@ -109,13 +81,43 @@ export default function HeatMap({ data, polygonCoordinates }) {
 					width: 3, // Asegúrate de que el ancho sea visible
 				}),
 				fill: new Fill({
-					color: 'rgba(255, 255, 255, 0.1)', // Color de relleno semi-transparente
+					color: 'rgba(255, 255, 255, 0.25)', // Color de relleno semi-transparente
 				}),
 			}),
 		})
 
 		// Agregar la capa del polígono al mapa
 		mapInstanceRef.current.addLayer(polygonLayer)
+
+		// Crear la capa de heatmap
+		const heatmapLayer = new Heatmap({
+			source: vectorSource,
+			blur: 5, // Reducir el blur hace que el color sea más intenso
+			radius: 15, // Aumenta el radio para cubrir más área
+			weight: function (feature) {
+				const weight = feature.get('weight')
+				// Aumentar los valores del peso para intensificar el color
+				return Math.min(weight * 1.8, 1) // Duplicamos el peso pero limitamos a un máximo de 1
+			},
+			gradient: [
+				'rgba(128, 0, 0, 0.75)', // Rojo transparente - mas seco
+				'rgba(255, 0, 0, 1)', // Rojo puro
+				'rgba(255, 165, 0, 1)', // naranja
+				'rgba(255, 255, 0, 1)', // Amarillo
+				'rgba(0, 0, 165, 1)', // azul obscuro
+				'rgba(0, 0, 255, 1)', // azul brillante - mas húmedo
+			],
+		})
+
+		// Eliminar cualquier capa existente antes de agregar una nueva
+		mapInstanceRef.current.getLayers().forEach((layer) => {
+			if (layer instanceof Heatmap) {
+				mapInstanceRef.current.removeLayer(layer)
+			}
+		})
+
+		// Agregar la capa de heatmap
+		mapInstanceRef.current.addLayer(heatmapLayer)
 
 		// Guardar el zoom actual cuando cambia
 		mapInstanceRef.current.getView().on('change:resolution', () => {

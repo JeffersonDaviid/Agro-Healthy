@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getSoilMoisture = (areaCorners, date) => {
+export const getPrecipitation = (areaCorners, date) => {
 	const fetchMoistureData = async () => {
 		const data_calculate = generateCoordinatesInside(areaCorners, date)
 		const data = {
